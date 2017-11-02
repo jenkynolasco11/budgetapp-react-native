@@ -1,12 +1,14 @@
-import React, { Component } from 'react';
-import { 
+import React, { Component } from 'react'
+import {
+
+  // KeyboardAvoidingView,
   View,
   TextInput,
   Text,
   TouchableHighlight,
   StyleSheet,
   Keyboard,
-} from 'react-native';
+} from 'react-native'
 
 const styles = StyleSheet.create({
   aligned : {
@@ -14,55 +16,55 @@ const styles = StyleSheet.create({
     justifyContent : 'center',
     flexDirection : 'row'
   },
-  highlight : {
-    color : 'white',
-  }
-});
+  highlight : { color : 'white' }
+})
 
-class UserPassInputs extends Component {
-  constructor(props){
-    super(props);
+class UserPassInputs extends Component{
+  constructor(props) {
+    super(props)
 
-    this._onPressButton = this._onPressButton.bind(this);
+    this._onPressButton = this._onPressButton.bind(this)
   }
 
-  _onPressButton(){
-    Keyboard.dismiss();
+  _onPressButton() {
+    Keyboard.dismiss()
   }
 
-  render(){
+  render() {
     return (
-      <View style={ this.props.styles.layout }>
+      <View
+        style={ this.props.styles.layout }
+      >
         <TextInput
-          underlineColorAndroid={"transparent"}
+          underlineColorAndroid={ 'transparent' }
           style={ this.props.styles.input }
-          placeholder={ "User ID or email" }
+          placeholder={ 'User ID or Email' }
         />
         <TextInput
-          underlineColorAndroid={"transparent"}
+          underlineColorAndroid={'transparent'}
           style={ this.props.styles.input }
           secureTextEntry
-          placeholder={ "Password" }
+          placeholder={ 'Password' }
         />
         <View style={ [styles.aligned] }>
           <TouchableHighlight
             onPress={this._onPressButton }
           >
-            <Text 
+            <Text
               style={[
-                this.props.styles.highlighted, 
+                this.props.styles.highlighted,
                 this.props.styles.button
               ]}
             >
               Login
             </Text>
           </TouchableHighlight>
-          <Text>{" or "}</Text>
+          <Text>{' or '}</Text>
           <TouchableHighlight
             onPress={this._onPressButton }
           >
             <Text style={[
-                this.props.styles.highlighted, 
+                this.props.styles.highlighted,
                 this.props.styles.button
               ]}
             >
@@ -71,9 +73,8 @@ class UserPassInputs extends Component {
           </TouchableHighlight>
         </View>
       </View>
-    );
+    )
   }
 }
 
-
-export default UserPassInputs;
+export default UserPassInputs

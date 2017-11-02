@@ -1,19 +1,23 @@
-import React from 'react';
-import { 
+import React from 'react'
+import {
+  KeyboardAvoidingView,
   View,
+  Image,
   TextInput,
   Text,
   TouchableHighlight,
   Button,
   StyleSheet,
   Dimensions
-} from 'react-native';
+} from 'react-native'
 
-import UserPassInputs from './UserPassInputs';
+import UserPassInputs from './UserPassInputs'
+const logo = require('../../assets/images/budget.png')
+const { width, height } = Dimensions.get('window')
 
-const {width , height} = Dimensions.get('window');
-
-const hwidth = width > height ? height : width;
+const hwidth = width > height
+              ? height
+              : width
 
 const styles = StyleSheet.create({
   login : {
@@ -24,12 +28,10 @@ const styles = StyleSheet.create({
   logo: {
     alignSelf : 'stretch',
     flex: 2,
-    // backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
   inputs : {
-    // backgroundColor : 'red',
     alignSelf : 'stretch',
     flex : 1,
     alignItems: 'center',
@@ -40,35 +42,37 @@ const styles = StyleSheet.create({
     padding : 5,
     margin : 3,
     backgroundColor : '#eee',
-    // alignSelf : 'stretch'
-    width : hwidth * 0.7
+    width : hwidth * 0.7,
+    borderRadius : 2
   },
-  button : {
-    color : 'white'
-  },
-  highlighted : {
-    color : 'cyan'
-  }
-});
+  button : { color : 'white' },
+  highlighted : { color : 'cyan' },
+  image : { width : width * 0.4 }
+})
 
 const Login = () => {
+  const userinputs = {
+    button : styles.button,
+    input : styles.input,
+    highlighted : styles.highlighted
+  }
+
   return (
-    <View style={ styles.login }>
+    <KeyboardAvoidingView style={ styles.login } behavior={ 'padding' }>
       <View style={ styles.logo }>
-        <Text>Budget Application</Text>
+        <Image
+          style={ styles.image }
+          resizeMode={ 'contain' }
+          source={ logo }
+        />
       </View>
       <View style={ styles.inputs }>
         <UserPassInputs
-          styles={{
-            // layout : styles.inputs,
-            button : styles.button,
-            input : styles.input,
-            highlighted : styles.highlighted
-          }}
+          styles={ userinputs }
         />
       </View>
-    </View>
-  );
+    </KeyboardAvoidingView>
+  )
 }
 
-export default Login;
+export default Login
